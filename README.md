@@ -7,7 +7,7 @@ The app is designed as a beginner-friendly fitness tracker demonstrating Android
 
 ---
 
-## 🚀 How it works
+## How it works
 
 The app follows a simple user flow:
 
