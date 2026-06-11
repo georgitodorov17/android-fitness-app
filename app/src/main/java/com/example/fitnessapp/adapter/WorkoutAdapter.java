@@ -13,46 +13,55 @@ import com.example.fitnessapp.data.Workout;
 
 import java.util.List;
 
-public class WorkoutAdapter
-        extends RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder> {
+public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder> {
 
-    private final List<Workout> workouts;
+    // Data list
+    private List<Workout> workouts;
 
-    public WorkoutAdapter(List<Workout> workouts) {
+    // Click listener interface
+    public interface OnWorkoutClickListener {
+        void onClick(Workout workout);
+    }
+
+    private OnWorkoutClickListener listener;
+
+    // Constructor
+    public WorkoutAdapter(List<Workout> workouts, OnWorkoutClickListener listener) {
         this.workouts = workouts;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
-    public WorkoutViewHolder onCreateViewHolder(
-            @NonNull ViewGroup parent,
-            int viewType) {
+    public WorkoutViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_workout,
-                        parent,
-                        false);
+                .inflate(R.layout.item_workout, parent, false);
 
         return new WorkoutViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(
-            @NonNull WorkoutViewHolder holder,
-            int position) {
+    public void onBindViewHolder(@NonNull WorkoutViewHolder holder, int position) {
 
         Workout workout = workouts.get(position);
 
         holder.tvName.setText(workout.getName());
 
         holder.tvDuration.setText(
-                "Duration: "
-                        + workout.getDuration()
-                        + " min");
+                "Duration: " + workout.getDuration() + " min"
+        );
 
         holder.tvDate.setText(
-                "Date: "
-                        + workout.getDate());
+                "Date: " + workout.getDate()
+        );
+
+        // CLICK EVENT (important for edit screen)
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onClick(workout);
+            }
+        });
     }
 
     @Override
@@ -60,8 +69,8 @@ public class WorkoutAdapter
         return workouts.size();
     }
 
-    static class WorkoutViewHolder
-            extends RecyclerView.ViewHolder {
+    // ViewHolder
+    static class WorkoutViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvName;
         TextView tvDuration;
