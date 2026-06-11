@@ -1,4 +1,4 @@
-## 🏋️ Fitness App
+## Fitness App
 
 **Fitness App** is a simple Android application that helps users track their workouts.  
 Users can add, view, edit, and delete workout records, as well as store the location where the workout took place using Google Maps.
@@ -24,7 +24,7 @@ The app follows a simple user flow:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 The app uses a simple MV-like structure:
 
@@ -50,7 +50,7 @@ The app uses a simple MV-like structure:
 
 ---
 
-## 🔁 User Flow Diagram
+## User Flow Diagram
 
 - Launch app → Workout list screen
 - Tap **+** → Add workout screen
@@ -60,7 +60,7 @@ The app uses a simple MV-like structure:
 
 ---
 
-## 🛠️ Technologies & Versions
+## Technologies & Versions
 
 | Technology | Version |
 |------------|--------|
@@ -74,7 +74,7 @@ The app uses a simple MV-like structure:
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the repository
 ```bash
